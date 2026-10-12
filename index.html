@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mohamed &amp; Heidi | Wedding Invitation</title>
+  <meta name="description" content="يسعدنا دعوتكم لمشاركتنا فرحتنا · 12th of November · Triumph Luxury Hotel" />
+  <link rel="canonical" href="https://aelghazoly4.github.io/Mohamed-Heidi/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aelghazoly4.github.io/Mohamed-Heidi/" />
+  <meta property="og:site_name" content="Mohamed &amp; Heidi" />
+  <meta property="og:title" content="Mohamed &amp; Heidi | Wedding Invitation" />
+  <meta property="og:description" content="يسعدنا دعوتكم لمشاركتنا فرحتنا · 12th of November · Triumph Luxury Hotel" />
+  <meta property="og:image" content="https://aelghazoly4.github.io/Mohamed-Heidi/assets/preview.jpg" />
+  <meta property="og:image:secure_url" content="https://aelghazoly4.github.io/Mohamed-Heidi/assets/preview.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Mohamed &amp; Heidi wedding invitation" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mohamed &amp; Heidi | Wedding Invitation" />
+  <meta name="twitter:description" content="يسعدنا دعوتكم لمشاركتنا فرحتنا · 12th of November · Triumph Luxury Hotel" />
+  <meta name="twitter:image" content="https://aelghazoly4.github.io/Mohamed-Heidi/assets/preview.jpg" />
+  <meta name="theme-color" content="#efe8dd" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/intro-poster-mh.jpg">
+  <style>
+    :root {
+      --ivory: #efe8dd;
+      --olive: #5f6342;
+      --olive-soft: rgba(95, 99, 66, .72);
+      --olive-faint: rgba(95, 99, 66, .45);
+      --gold: #b89a5e;
+      --script: "Pinyon Script", cursive;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --arabic: "Amiri", "Traditional Arabic", serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--ivory); color: var(--olive); overflow-x: hidden; }
+    body { font-family: var(--serif); -webkit-font-smoothing: antialiased; }
+    body.locked { overflow: hidden; height: 100vh; }
+    img, video { display: block; }
+
+    /* ---------- Intro (envelope) ---------- */
+    #intro {
+      position: fixed; inset: 0; z-index: 50; cursor: pointer;
+      background: var(--ivory);
+    }
+    #intro video, #intro img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    }
+    #intro video { opacity: 0; }
+    #intro.playing video { opacity: 1; }
+    #intro.playing img { opacity: 0; }
+    #intro .hint {
+      position: absolute; left: 0; right: 0; bottom: 64px; text-align: center;
+      color: rgba(255,255,255,.75); font-size: 12px; letter-spacing: .25em; text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(0,0,0,.3); pointer-events: none;
+      animation: pulse 3s ease-in-out infinite;
+    }
+    #intro.playing .hint { display: none; }
+    #intro .veil {
+      position: absolute; inset: 0; background: var(--ivory); opacity: 0; pointer-events: none;
+      transition: opacity 1.2s ease-in-out;
+    }
+    #intro.fading .veil { opacity: 1; }
+    @keyframes pulse { 0%,100% { opacity: .8 } 50% { opacity: .35 } }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden;
+      display: flex; justify-content: center; align-items: flex-start;
+      padding-top: calc(42vh + 70px);
+    }
+    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-text { position: relative; z-index: 1; text-align: center; padding: 0 24px; }
+    .hero .eyebrow {
+      font-size: 14px; letter-spacing: .3em; text-transform: uppercase; margin-bottom: 16px;
+      color: rgba(95,99,66,.8); font-weight: 500;
+    }
+    .hero h1 {
+      font-family: var(--script); font-weight: 400; font-size: clamp(36px, 10.5vw, 96px); white-space: nowrap;
+      line-height: 1.1; margin-bottom: 12px; color: var(--olive);
+    }
+    .hero .date {
+      font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: rgba(95,99,66,.72); font-weight: 500;
+    }
+
+    /* reveal animations */
+    .rise { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+    .rise.in { opacity: 1; transform: none; }
+
+    /* ---------- Invitation (verse + text) ---------- */
+    .invite {
+      text-align: center; padding: 72px 24px 56px; max-width: 640px; margin: 0 auto;
+    }
+    .bismillah {
+      font-family: var(--arabic); font-size: 22px; color: var(--olive-soft); margin-bottom: 26px;
+    }
+    .verse {
+      font-family: var(--arabic); direction: rtl; font-size: clamp(23px, 6vw, 30px); line-height: 2.05;
+      color: var(--olive);
+    }
+    .verse-ref {
+      font-family: var(--arabic); direction: rtl; font-size: 15px; color: var(--olive-faint); margin-top: 6px;
+    }
+    .divider {
+      display: flex; align-items: center; justify-content: center; gap: 14px; margin: 38px auto;
+      color: var(--gold);
+    }
+    .divider::before, .divider::after {
+      content: ""; height: 1px; width: 72px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .divider::after { background: linear-gradient(90deg, var(--gold), transparent); }
+    .divider span { font-size: 14px; }
+    .message {
+      font-family: var(--arabic); direction: rtl; font-size: clamp(19px, 5vw, 23px); line-height: 2;
+      color: var(--olive);
+    }
+    .initials { margin-top: 44px; }
+    .initials .with {
+      font-size: 13px; letter-spacing: .3em; text-transform: uppercase; color: var(--olive-soft); font-weight: 500;
+    }
+    .monogram {
+      position: relative; width: 150px; height: 150px; margin: 18px auto 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .monogram svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--gold); }
+    .monogram b {
+      font-family: var(--script); font-weight: 400; font-size: 58px; color: var(--olive); line-height: 1;
+      padding-top: 6px;
+    }
+
+    /* ---------- Details ---------- */
+    .details { padding-bottom: 72px; }
+    .details .lights { width: 100%; max-width: 900px; margin: 0 auto; }
+    .details-head { text-align: center; padding: 16px 24px 0; }
+    .details-head h2 { font-family: var(--script); font-weight: 400; font-size: clamp(46px, 12vw, 60px); margin-bottom: 8px; }
+    .details-head p { font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: var(--olive-soft); font-weight: 500; }
+    .badge {
+      position: relative; width: min(440px, 100%); aspect-ratio: 5 / 6; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .badge img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+    .badge-body { position: relative; text-align: center; padding: 8px 44px 0; }
+    .badge-row + .badge-row { margin-top: 22px; }
+    .badge-row h3 { font-family: var(--script); font-weight: 400; font-size: 34px; line-height: 1.1; margin-bottom: 4px; }
+    .badge-row p { font-size: 16px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; }
+    .badge-row small { display: block; font-size: 15px; color: var(--olive-soft); letter-spacing: .08em; margin-top: 2px; font-weight: 500; }
+    .actions { display: flex; gap: 12px; justify-content: center; margin-top: 6px; padding: 0 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 6px;
+      background: var(--olive); color: #fff; text-decoration: none; border: 0; cursor: pointer;
+      font-family: var(--serif); font-size: 15px; font-weight: 600; letter-spacing: .04em;
+      transition: background .2s;
+    }
+    .btn:hover { background: #4f5337; }
+    .btn svg { width: 16px; height: 16px; }
+
+    .closing { text-align: center; padding: 8px 24px 96px; }
+    .closing .names { font-family: var(--script); font-size: clamp(44px, 12vw, 64px); }
+    .closing .note { font-size: 14px; letter-spacing: .25em; text-transform: uppercase; color: var(--olive-soft); margin-top: 6px; font-weight: 500; }
+
+    /* ---------- Mute button ---------- */
+    #mute {
+      position: fixed; right: 24px; bottom: 24px; z-index: 60; width: 46px; height: 46px; border-radius: 50%;
+      border: 0; background: rgba(95,99,66,.9); color: var(--ivory); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    }
+    #mute svg { width: 20px; height: 20px; }
+    #mute .off { display: none; }
+    #mute.muted .on { display: none; }
+    #mute.muted .off { display: block; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rise { transition: none; opacity: 1; transform: none; }
+      #intro .hint { animation: none; }
+    }
+  </style>
+</head>
+<body class="locked">
+
+  <!-- Intro: envelope, tap to open -->
+  <div id="intro" role="button" aria-label="Open invitation">
+    <video id="introVideo" src="assets/intro-video-mh.mp4" muted playsinline preload="auto"></video>
+    <img src="assets/intro-poster-mh.jpg" alt="Invitation envelope" fetchpriority="high">
+    <p class="hint">Tap to open</p>
+    <div class="veil"></div>
+  </div>
+
+  <audio id="music" src="assets/invitation-song.mp3" preload="auto" loop></audio>
+
+  <button id="mute" aria-label="Mute">
+    <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
+  </button>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <video src="assets/hero-bg.mp4" poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+      <div class="hero-text">
+        <p class="eyebrow rise" data-hero data-delay="300">We are getting married</p>
+        <h1 class="rise" data-hero data-delay="600">Mohamed &amp; Heidi</h1>
+        <p class="date rise" data-hero data-delay="900">12th of November</p>
+      </div>
+    </section>
+
+    <!-- Verse + invitation -->
+    <section class="invite">
+      <p class="bismillah rise" data-scroll>بسم الله الرحمن الرحيم</p>
+      <p class="verse rise" data-scroll>﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾</p>
+      <p class="verse-ref rise" data-scroll>سورة الروم – ٢١</p>
+
+      <div class="divider rise" data-scroll><span>✦</span></div>
+
+      <p class="message rise" data-scroll>يسعدنا دعوتكم لمشاركتنا فرحتنا بمناسبة عقد قراننا وزفافنا، فبوجودكم تكتمل فرحتنا وتزداد سعادتنا</p>
+
+      <div class="initials rise" data-scroll>
+        <p class="with">With our initials</p>
+        <div class="monogram">
+          <svg viewBox="0 0 150 150" fill="none" stroke="currentColor" aria-hidden="true">
+            <circle cx="75" cy="75" r="68" stroke-width="1"/>
+            <circle cx="75" cy="75" r="62" stroke-width=".6" stroke-dasharray="2 4"/>
+            <path d="M75 3 l3 4 -3 4 -3 -4z M75 139 l3 4 -3 4 -3 -4z" fill="currentColor" stroke="none"/>
+          </svg>
+          <b>M&amp;H</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- Details -->
+    <section class="details">
+      <img class="lights" src="assets/string-lights.png" alt="" loading="lazy">
+      <div class="details-head rise" data-scroll>
+        <h2>The Details</h2>
+        <p>Everything you need to know</p>
+      </div>
+      <div class="badge rise" data-scroll>
+        <img src="assets/ornate-badge.png" alt="" loading="lazy">
+        <div class="badge-body">
+          <div class="badge-row">
+            <h3>Location</h3>
+            <p>Triumph Luxury Hotel</p>
+          </div>
+          <div class="badge-row">
+            <h3>Date</h3>
+            <p>12th of November</p>
+          </div>
+          <div class="badge-row">
+            <h3>Time</h3>
+            <p>7:30 – 2:00</p>
+          </div>
+        </div>
+      </div>
+      <div class="actions rise" data-scroll>
+        <a class="btn" href="https://maps.app.goo.gl/bTzdvJPf7AHqYo3B7" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Google Maps
+        </a>
+        <button class="btn" id="calBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Calendar
+        </button>
+      </div>
+    </section>
+
+    <section class="closing rise" data-scroll>
+      <p class="names">Mohamed &amp; Heidi</p>
+      <p class="note">We can't wait to celebrate with you</p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var intro = document.getElementById('intro');
+      var introVideo = document.getElementById('introVideo');
+      var music = document.getElementById('music');
+      var muteBtn = document.getElementById('mute');
+      var state = 'idle';
+
+      // Fade the music in gently once it starts
+      function startMusic() {
+        if (!music.paused) return;
+        music.volume = 0;
+        music.play().then(function () {
+          var v = 0;
+          var t = setInterval(function () {
+            v += 0.017;
+            if (v >= 0.5) { music.volume = 0.5; clearInterval(t); } else { music.volume = v; }
+          }, 100);
+        }).catch(function () {});
+      }
+
+      function revealHero() {
+        document.querySelectorAll('[data-hero]').forEach(function (el) {
+          setTimeout(function () { el.classList.add('in'); }, +el.dataset.delay || 0);
+        });
+      }
+
+      function finishIntro() {
+        intro.remove();
+        document.body.classList.remove('locked');
+        revealHero();
+      }
+
+      intro.addEventListener('click', function () {
+        if (state !== 'idle') return;
+        state = 'loading';
+        startMusic();
+        introVideo.play().then(function () {
+          state = 'playing';
+          intro.classList.add('playing');
+        }).catch(function () {
+          // Video can't play: skip straight to the invitation
+          state = 'fading';
+          intro.classList.add('fading');
+          setTimeout(finishIntro, 1200);
+        });
+      });
+
+      introVideo.addEventListener('ended', function () {
+        state = 'fading';
+        intro.classList.add('fading');
+        setTimeout(finishIntro, 1200);
+      });
+
+      muteBtn.addEventListener('click', function () {
+        music.muted = !music.muted;
+        muteBtn.classList.toggle('muted', music.muted);
+        muteBtn.setAttribute('aria-label', music.muted ? 'Unmute' : 'Mute');
+        if (!music.muted) startMusic();
+      });
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) music.pause();
+        else if (state !== 'idle' && !music.muted) music.play().catch(function () {});
+      });
+
+      // Scroll reveal
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('[data-scroll]').forEach(function (el) { io.observe(el); });
+
+      // Add to calendar (.ics)
+      document.getElementById('calBtn').addEventListener('click', function () {
+        var ics = [
+          'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Wedding//EN',
+          'BEGIN:VEVENT',
+          'DTSTART;TZID=Africa/Cairo:20261112T193000',
+          'DTEND;TZID=Africa/Cairo:20261113T020000',
+          "SUMMARY:Mohamed & Heidi's Wedding",
+          'LOCATION:Triumph Luxury Hotel',
+          'END:VEVENT', 'END:VCALENDAR'
+        ].join('\r\n');
+        var url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+        var a = document.createElement('a');
+        a.href = url; a.download = 'wedding.ics'; a.click();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      });
+    })();
+  </script>
+</body>
+</html>
