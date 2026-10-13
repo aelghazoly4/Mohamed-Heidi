@@ -88,6 +88,58 @@
       font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: rgba(95,99,66,.72); font-weight: 500;
     }
 
+    /* scroll-down cue */
+    .scroll-cue {
+      display: inline-flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 7vh;
+      color: var(--olive); text-decoration: none; -webkit-tap-highlight-color: transparent;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .scroll-cue.in { opacity: 1; transform: none; }
+    .scroll-cue.gone { opacity: 0; transform: translateY(10px); pointer-events: none; }
+    .scroll-cue .label {
+      font-size: 12px; font-weight: 600; letter-spacing: .38em; text-transform: uppercase;
+      padding-left: .38em; color: rgba(95,99,66,.85);
+      animation: cueGlow 2.6s ease-in-out infinite;
+    }
+    .scroll-cue .mouse {
+      position: relative; width: 26px; height: 42px; border-radius: 14px;
+      border: 1.5px solid rgba(184,154,94,.9);
+      background: rgba(255,250,240,.35); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+      box-shadow: 0 0 0 0 rgba(184,154,94,.45); animation: cueRing 2.6s ease-out infinite;
+    }
+    .scroll-cue .mouse::before {
+      content: ""; position: absolute; left: 50%; top: 8px; width: 3px; height: 8px; margin-left: -1.5px;
+      border-radius: 2px; background: var(--gold); animation: cueWheel 1.6s cubic-bezier(.6,0,.4,1) infinite;
+    }
+    .scroll-cue .chevrons { display: flex; flex-direction: column; align-items: center; margin-top: -2px; }
+    .scroll-cue .chevrons i {
+      display: block; width: 10px; height: 10px; margin-top: -3px;
+      border-right: 1.5px solid var(--gold); border-bottom: 1.5px solid var(--gold);
+      transform: rotate(45deg); opacity: 0; animation: cueArrow 1.6s ease-in-out infinite;
+    }
+    .scroll-cue .chevrons i:nth-child(2) { animation-delay: .2s; }
+    .scroll-cue .chevrons i:nth-child(3) { animation-delay: .4s; }
+    @keyframes cueWheel {
+      0% { transform: translateY(0); opacity: 0; }
+      20% { opacity: 1; }
+      70% { transform: translateY(14px); opacity: 0; }
+      100% { transform: translateY(14px); opacity: 0; }
+    }
+    @keyframes cueArrow {
+      0% { opacity: 0; transform: translateY(-6px) rotate(45deg); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(6px) rotate(45deg); }
+    }
+    @keyframes cueRing {
+      0% { box-shadow: 0 0 0 0 rgba(184,154,94,.45); }
+      70%, 100% { box-shadow: 0 0 0 12px rgba(184,154,94,0); }
+    }
+    @keyframes cueGlow { 0%,100% { opacity: .65; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-cue .mouse, .scroll-cue .mouse::before, .scroll-cue .chevrons i, .scroll-cue .label { animation: none; opacity: 1; }
+    }
+
     /* reveal animations */
     .rise { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
     .rise.in { opacity: 1; transform: none; }
@@ -121,11 +173,8 @@
       color: var(--olive);
     }
     .initials { margin-top: 44px; }
-    .initials .with {
-      font-size: 13px; letter-spacing: .3em; text-transform: uppercase; color: var(--olive-soft); font-weight: 500;
-    }
     .monogram {
-      position: relative; width: 150px; height: 150px; margin: 18px auto 0;
+      position: relative; width: 150px; height: 150px; margin: 0 auto;
       display: flex; align-items: center; justify-content: center;
     }
     .monogram svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--gold); }
@@ -206,11 +255,16 @@
         <p class="eyebrow rise" data-hero data-delay="300">We are getting married</p>
         <h1 class="rise" data-hero data-delay="600">Mohamed &amp; Heidi</h1>
         <p class="date rise" data-hero data-delay="900">12th of November</p>
+        <a class="scroll-cue" id="scrollCue" href="#invite" aria-label="Scroll down" data-hero data-delay="1600">
+          <span class="label">Scroll Down</span>
+          <span class="mouse"></span>
+          <span class="chevrons"><i></i><i></i><i></i></span>
+        </a>
       </div>
     </section>
 
     <!-- Verse + invitation -->
-    <section class="invite">
+    <section class="invite" id="invite">
       <p class="bismillah rise" data-scroll>بسم الله الرحمن الرحيم</p>
       <p class="verse rise" data-scroll>﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾</p>
       <p class="verse-ref rise" data-scroll>سورة الروم – ٢١</p>
@@ -220,7 +274,6 @@
       <p class="message rise" data-scroll>يسعدنا دعوتكم لمشاركتنا فرحتنا بمناسبة عقد قراننا وزفافنا، فبوجودكم تكتمل فرحتنا وتزداد سعادتنا</p>
 
       <div class="initials rise" data-scroll>
-        <p class="with">With our initials</p>
         <div class="monogram">
           <svg viewBox="0 0 150 150" fill="none" stroke="currentColor" aria-hidden="true">
             <circle cx="75" cy="75" r="68" stroke-width="1"/>
@@ -339,6 +392,16 @@
         if (document.hidden) music.pause();
         else if (state !== 'idle' && !music.muted) music.play().catch(function () {});
       });
+
+      // Scroll-down cue: smooth scroll on tap, fade out once the guest starts scrolling
+      var cue = document.getElementById('scrollCue');
+      cue.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('invite').scrollIntoView({ behavior: 'smooth' });
+      });
+      window.addEventListener('scroll', function () {
+        cue.classList.toggle('gone', window.scrollY > 60);
+      }, { passive: true });
 
       // Scroll reveal
       var io = new IntersectionObserver(function (entries) {
